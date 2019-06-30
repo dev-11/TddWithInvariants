@@ -153,5 +153,17 @@ namespace Clocks.Tests
             stopwatch.Minute.Should().Be(expectedMinute);
             stopwatch.Second.Should().Be(expectedSecond);
         }
+
+        [Fact]
+        public void AddHoursBreaksInvariantWithMaxValueOverflow()
+        {
+            var stopwatch = new Stopwatch(int.MaxValue,0,0);
+
+            stopwatch.Invariant.Should().BeTrue();
+
+            stopwatch.AddHours(1);
+
+            stopwatch.Invariant.Should().BeFalse();
+        }
     }
 }
