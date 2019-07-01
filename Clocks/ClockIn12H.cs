@@ -10,7 +10,7 @@ namespace Clocks
         {
         }
 
-        public int Hour
+        public new int Hour
         {
             get
             {
