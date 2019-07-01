@@ -150,8 +150,11 @@ namespace Clocks.Tests
             clock.Second.Should().Be(expectedSecond);
         }
 
-        [Fact]
-        public void AddMinuteRollsHour()
+        [Theory]
+        [InlineData(30,2,0)]
+        [InlineData(31,2,1)]
+        [InlineData(95,3,5)]
+        public void AddMinuteRollsHour(int minutes, int expectedHour, int expectedMinute)
         {
             var clock = new ClockIn24H(1,30, 0);
             clock.Hour.Should().Be(1);
@@ -159,16 +162,19 @@ namespace Clocks.Tests
             clock.Second.Should().Be(0);
             clock.Invariant.Should().BeTrue();
 
-            clock.AddMinutes(30);
+            clock.AddMinutes(minutes);
             
             clock.Invariant.Should().BeTrue();
-            clock.Hour.Should().Be(2);
-            clock.Minute.Should().Be(0);
+            clock.Hour.Should().Be(expectedHour);
+            clock.Minute.Should().Be(expectedMinute);
             clock.Second.Should().Be(0);
         }
 
-        [Fact]
-        public void AddSecondsRollsMinuteAndHour()
+        [Theory]
+        [InlineData(1,1,0,0)]
+        [InlineData(61,1,1,0)]
+        [InlineData(12345,4,25,44)]
+        public void AddSecondsRollsMinuteAndHour(int seconds, int expectedHour, int expectedMinute, int expecedSecond)
         {
             var clock = new ClockIn24H(0,59, 59);
             clock.Hour.Should().Be(0);
