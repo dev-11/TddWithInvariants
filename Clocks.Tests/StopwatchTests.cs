@@ -14,13 +14,7 @@ namespace Clocks.Tests
 
         [Theory]
         [InlineData(-1,  0,  0)]
-        //[InlineData(24,  0,  0)]
-        [InlineData(12, -1,  0)]
-        [InlineData(12, 60,  0)]
-        [InlineData(12,  0, -1)]
-        [InlineData(12,  0, 60)]
         [InlineData(-1, -1, -1)]
-        [InlineData(25, 60, 60)]
         public void InvariantBreaksOnIncorrectCtorParameters(int hour, int minute, int second)
         {
             var stopwatch = new Stopwatch(hour, minute, second);
@@ -170,18 +164,6 @@ namespace Clocks.Tests
             stopwatch.Hour.Should().Be(24);
             stopwatch.Minute.Should().Be(0);
             stopwatch.Second.Should().Be(0);
-        }
-
-        [Fact]
-        public void AddHoursBreaksInvariantWithMaxValueOverflow()
-        {
-            var stopwatch = new Stopwatch(int.MaxValue,0,0);
-
-            stopwatch.Invariant.Should().BeTrue();
-
-            stopwatch.AddHours(1);
-
-            stopwatch.Invariant.Should().BeFalse();
         }
     }
 }

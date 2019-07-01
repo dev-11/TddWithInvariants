@@ -15,10 +15,6 @@ namespace Clocks.Tests
         [Theory]
         [InlineData(-1,  0,  0)]
         [InlineData(24,  0,  0)]
-        [InlineData(12, -1,  0)]
-        [InlineData(12, 60,  0)]
-        [InlineData(12,  0, -1)]
-        [InlineData(12,  0, 60)]
         [InlineData(-1, -1, -1)]
         [InlineData(25, 60, 60)]
         public void InvariantBreaksOnIncorrectCtorParameters(int hour, int minute, int second)
@@ -174,7 +170,7 @@ namespace Clocks.Tests
         [InlineData(1,1,0,0)]
         [InlineData(61,1,1,0)]
         [InlineData(12345,4,25,44)]
-        public void AddSecondsRollsMinuteAndHour(int seconds, int expectedHour, int expectedMinute, int expecedSecond)
+        public void AddSecondsRollsMinuteAndHour(int seconds, int expectedHour, int expectedMinute, int expectedSecond)
         {
             var clock = new ClockIn24H(0,59, 59);
             clock.Hour.Should().Be(0);

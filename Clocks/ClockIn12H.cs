@@ -1,6 +1,6 @@
 namespace Clocks
 {
-    public class ClockIn12H : ClockIn24H
+    public class ClockIn12H : ClockIn24H, IClock
     {
         public ClockIn12H()
         {
@@ -10,7 +10,7 @@ namespace Clocks
         {
         }
 
-        public new int Hour
+        public int Hour
         {
             get
             {
