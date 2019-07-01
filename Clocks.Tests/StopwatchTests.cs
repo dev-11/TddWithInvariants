@@ -155,6 +155,24 @@ namespace Clocks.Tests
         }
 
         [Fact]
+        public void AddSecondAddsSecond2()
+        {
+            var stopwatch = new Stopwatch(23, 59, 59);
+
+            stopwatch.Hour.Should().Be(23);
+            stopwatch.Minute.Should().Be(59);
+            stopwatch.Second.Should().Be(59);
+            stopwatch.Invariant.Should().BeTrue();
+            
+            stopwatch.AddSeconds(1);
+
+            stopwatch.Invariant.Should().BeTrue();
+            stopwatch.Hour.Should().Be(24);
+            stopwatch.Minute.Should().Be(0);
+            stopwatch.Second.Should().Be(0);
+        }
+
+        [Fact]
         public void AddHoursBreaksInvariantWithMaxValueOverflow()
         {
             var stopwatch = new Stopwatch(int.MaxValue,0,0);

@@ -28,15 +28,20 @@ namespace Clocks
         
         public void AddMinutes(int minute)
         {
-            Hour   += minute / 60;
-            Minute += minute % 60;
+            var newMinute = Minute + minute;
+
+            Hour   += newMinute / 60;
+            Minute  = newMinute % 60;
         }
 
         public void AddSeconds(int second)
         {
-            Hour   += second / 3600;
-            Minute += second % 3600 / 60;
-            Second += second % 3600 % 60;
+            var newSecond = Second + second;
+            var newMinute = Minute + newSecond % 3600 / 60;
+
+            Hour   += newMinute / 60 + newSecond / 3600 % 60;
+            Minute  = newMinute % 60;
+            Second  = newSecond % 3600 % 60;
         }
     }
 }
