@@ -1,6 +1,6 @@
 namespace Clocks
 {
-    public class Stopwatch : BaseClock, IClock
+    public class Stopwatch : BaseClock
     {
         protected override bool InvariantDefinition => Hour >= 0 
                                                     && Minute >= 0 && Minute <= 59

@@ -2,7 +2,7 @@
 
 namespace Clocks
 {
-    public class ClockIn24H : BaseClock, IClock
+    public class ClockIn24H : BaseClock
     {
         protected override bool InvariantDefinition => Hour   >= 0 && Hour    < 24
                                                     && Minute >= 0 && Minute <= 59

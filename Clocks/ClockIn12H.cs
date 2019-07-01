@@ -1,6 +1,6 @@
 namespace Clocks
 {
-    public class ClockIn12H : ClockIn24H, IClock
+    public class ClockIn12H : ClockIn24H
     {
         public ClockIn12H()
         {
