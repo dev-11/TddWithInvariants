@@ -5,7 +5,7 @@ install:
   - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
 script:
   - msbuild /p:Configuration=Release TddWithInvariants.sln
-  - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./TddWithInvariants/Clocks.Tests/bin/Release/netcoreapp2.1/Clocks.Tests.dll
+  - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./Clocks.Tests/bin/Release/netcoreapp2.1/Clocks.Tests.dll
 after_success:
     - codecov
     
