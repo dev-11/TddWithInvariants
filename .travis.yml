@@ -5,7 +5,7 @@ env:
   global:
     - DOTNET_CLI_TELEMETRY_OPTOUT: 1
 script:
-  - dotnet build CIDemo.sln -c Release
+  - dotnet build TddWithInvariants.sln -c Release
   - dotnet test -c Release --no-build test/test.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
 after_script:
   - bash <(curl -s https://codecov.io/bash) 
