@@ -2,13 +2,11 @@ language: csharp
 solution: TddWithInvariants.sln
 install:
   - nuget restore TddWithInvariants.sln
-#  - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
-  - choco install opencover.portable
-  - choco install codecov
-#script:
-#  - msbuild /p:Configuration=Release TddWithInvariants.sln
-#  - mono ./testrunner/xunit.runners.*/tools/xunit.console.clr4.exe ./Clocks.Tests/bin/Release/netcoreapp2.1/Clocks.Tests.dll
+script:
+  - msbuild /p:Configuration=Release TddWithInvariants.sln
+  - dotnet test -c Release --no-build ./Clocks.Tests/Clocks.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover 
+
 after_success:
-    - codecov
+    - bash <(curl -s https://codecov.io/bash)
     
     
