@@ -1,7 +1,6 @@
 language: csharp
 dotnet: 2.1.502
 solution: TddWithInvariants.sln
-os: windows
 env:
   global:
     - DOTNET_CLI_TELEMETRY_OPTOUT: 1
