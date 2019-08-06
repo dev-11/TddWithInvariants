@@ -11,5 +11,5 @@ script:
   - dotnet build TddWithInvariants.sln -c Release
   - dotnet test -c Release --no-build ./Clocks.Tests/Clocks.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover 
 after_script:
-  - codecov
+  - codecov -f coverage.json
 #  - bash <(curl -s https://codecov.io/bash) 
