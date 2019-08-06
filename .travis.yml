@@ -1,12 +1,11 @@
 language: csharp
-solution: TddWithInvariants.sln
-install:
-  - nuget restore TddWithInvariants.sln
+dotnet: 2.1.4
+sudo: false
+env:
+ 	global:
+ 		- DOTNET_CLI_TELEMETRY_OPTOUT: 1
 script:
-  - msbuild /p:Configuration=Release TddWithInvariants.sln
-  - dotnet test -c Release --no-build ./Clocks.Tests/Clocks.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover 
-
-after_success:
-    - bash <(curl -s https://codecov.io/bash)
-    
-    
+	- dotnet build CIDemo.sln -c Release
+	- dotnet test -c Release --no-build test/test.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+after_script:
+	- bash <(curl -s https://codecov.io/bash) 
