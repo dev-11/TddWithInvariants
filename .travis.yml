@@ -11,7 +11,7 @@ env:
 install:
 #  - pip install --upgrade pip
   - pip install tox codecov --user
-  - dotnet add package coverlet.msbuild
+  - dotnet tool install --global coverlet.console
 script:
   - dotnet build TddWithInvariants.sln -c Release
   - dotnet test -c Release --no-build ./Clocks.Tests/Clocks.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover 
