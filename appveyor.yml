@@ -10,6 +10,7 @@ init:
 before_build:
 - nuget restore
 - nuget install OpenCover -OutputDirectory packages -Version 4.6.519
+- choco install codecov
 
 build:
   project: TddWithInvariants.sln
