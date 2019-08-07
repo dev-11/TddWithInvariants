@@ -1,10 +1,7 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace Clocks
+﻿namespace Clocks
 {
     public class ClockIn24H : BaseClock
     {
-        [ExcludeFromCodeCoverage]
         protected override bool InvariantDefinition => Hour   >= 0 && Hour    < 24
                                                     && Minute >= 0 && Minute <= 59
                                                     && Second >= 0 && Second <= 59

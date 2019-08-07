@@ -1,10 +1,7 @@
-using System.Diagnostics.CodeAnalysis;
-
 namespace Clocks
 {
     public class Stopwatch : BaseClock
     {
-        [ExcludeFromCodeCoverage]
         protected override bool InvariantDefinition => Hour >= 0 
                                                     && Minute >= 0 && Minute <= 59
                                                     && Second >= 0 && Second <= 59
