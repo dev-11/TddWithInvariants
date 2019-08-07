@@ -178,12 +178,12 @@ namespace Clocks.Tests
             clock.Second.Should().Be(59);
             clock.Invariant.Should().BeTrue();
 
-            clock.AddSeconds(61);
+            clock.AddSeconds(seconds);
 
             clock.Invariant.Should().BeTrue();
-            clock.Hour.Should().Be(1);
-            clock.Minute.Should().Be(1);
-            clock.Second.Should().Be(0);
+            clock.Hour.Should().Be(expectedHour);
+            clock.Minute.Should().Be(expectedMinute);
+            clock.Second.Should().Be(expectedSecond);
         }
     }
 }
