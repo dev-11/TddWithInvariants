@@ -16,7 +16,7 @@ build:
   verbosity: minimal
 
 test_script:
-- .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full .\Clocks.Tests\Clocks.Tests.csproj" -output:"coverage.xml" -filter:"+[Clocks*]* -[Tests*]*"
+- .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full .\Clocks.Tests\Clocks.Tests.csproj" -output:"coverage.xml" -filter:"+[Clocks*]* -[*.Tests]*" -oldstyle
 #- OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:".\Clocks.Tests\bin\Debug\netcoreapp2.1\Clocks.Tests.dll
 #-noshadow" -filter:"+[UnitTestTargetProject*]* -[MyUnitTests*]*" -output:".\TddWithInvariants_coverage.xml"
 - codecov -f "TddWithInvariants_coverage.xml"
