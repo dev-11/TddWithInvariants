@@ -17,5 +17,5 @@ build:
   verbosity: minimal
 
 test_script:
-- OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:".\Clocks.Tests\bin\Debug\Clocks.Tests.dll -noshadow" -filter:"+[UnitTestTargetProject*]* -[MyUnitTests*]*" -output:".\TddWithInvariants_coverage.xml"
-- codecov -f "MyProject_coverage.xml"
+- OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:".\Clocks.Tests\bin\Release\Clocks.Tests.dll -noshadow" -filter:"+[UnitTestTargetProject*]* -[MyUnitTests*]*" -output:".\TddWithInvariants_coverage.xml"
+- codecov -f "TddWithInvariants_coverage.xml"
