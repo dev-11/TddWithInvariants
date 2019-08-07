@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Clocks
 {
     public class ClockIn12H : ClockIn24H
@@ -27,6 +29,7 @@ namespace Clocks
 
         public DayPeriod DayPeriod { get; private set; }
 
+        [ExcludeFromCodeCoverage]
         protected override bool InvariantDefinition => Hour >= 1 && Hour <= 12
                                                     && DayPeriod != DayPeriod.Undefined
                                                     && base.InvariantDefinition;
