@@ -11,13 +11,16 @@ before_build:
 - nuget restore
 - nuget install OpenCover -OutputDirectory packages -Version 4.6.519
 - choco install codecov
+- dotnet tool install --global dotnet-sonarscanner --version 4.3.1
 
 build:
   project: TddWithInvariants.sln
   verbosity: minimal
 
 test_script:
+- dotnet sonarscanner begin /k:"checkout.com-payment-gateway" /d:sonar.cs.opencover.reportsPaths="coverage.xml, api_coverage.xml" /d:"sonar.host.url=https://sonarcloud.io" /o:"dev-11" /d:"sonar.login=130d2a5a5117e7dda2e7c9dfd233c32412c2884d"
+- msbuild /verbosity:quiet TddWithInvariants.sln
 - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full .\Clocks.Tests\Clocks.Tests.csproj" -output:"coverage.xml" -filter:"+[Clocks*]* -[*.Tests]*" -oldstyle
-#- OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:".\Clocks.Tests\bin\Debug\netcoreapp2.1\Clocks.Tests.dll
-#-noshadow" -filter:"+[UnitTestTargetProject*]* -[MyUnitTests*]*" -output:".\TddWithInvariants_coverage.xml"
 - codecov -f "coverage.xml"
+- dotnet sonarscanner end /d:"sonar.login=130d2a5a5117e7dda2e7c9dfd233c32412c2884d"
+
